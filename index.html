@@ -1,262 +1,245 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.1">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Company X - Conexão SAP Concur</title>
+    <style>
+        /* Estilos básicos para o corpo e layout central */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Cor de fundo suave */
+        }
+        /* Estilo para o cabeçalho (laranja) */
+        header {
+            background-color: #ff8c00; /* Laranja da imagem */
+            color: white;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between; /* Distribui o espaço entre os itens */
+            align-items: center;
+            position: relative; /* Necessário para posicionamento absoluto/centralização */
+        }
+        /* Estilo para a seção do logo (mantido na esquerda) */
+        .logo-section {
+            display: flex;
+            align-items: center;
+            /* Garante que esta seção ocupe o espaço para alinhar o título */
+            min-width: 150px; 
+            z-index: 10;
+        }
+        /* Logo quadrado */
+        .logo-placeholder {
+            width: 40px; 
+            height: 40px; 
+            background-color: #f4f4f4;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        /* NOVO: Estilo para centralizar o título */
+        .header-title-container {
+            position: absolute; /* Tira do fluxo normal */
+            left: 50%; /* Move para o meio */
+            transform: translateX(-50%); /* Ajusta 50% da largura do próprio elemento para centralização perfeita */
+            font-size: 24px; /* Tamanho padrão de 24px do passo anterior */
+            font-weight: bold;
+            z-index: 5;
+            white-space: nowrap; /* Impede que o título quebre linha */
+        }
+        /* Estilo para os links do cabeçalho (mantido na direita) */
+        nav {
+            z-index: 10;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        /* Estilo para o container principal do formulário */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        /* Estilo para o cartão do formulário */
+        .form-card {
+            background-color: white;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 600px; /* Limite de largura para o cartão */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding-bottom: 40px; /* Padding inferior do card */
+        }
+        /* Estilo para o container do título do formulário com fundo cinza */
+        .form-title-container {
+            background-color: #f0f0f0; /* Cinza claro */
+            padding: 20px 40px; /* Padding para o texto dentro */
+            border-bottom: 1px solid #ccc; /* Linha divisória como no exemplo */
+            margin-bottom: 30px; /* Espaço abaixo do título */
+        }
+        /* Estilo para o título do formulário (sem o fundo, agora está no container) */
+        .form-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0; /* Remover margem padrão do h2 */
+        }
+        /* Estilo para os grupos de input */
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 0 40px; /* Padding horizontal para os elementos internos do card */
+        }
+        .input-group label {
+            width: 150px; /* Largura fixa para os labels */
+            font-size: 14px;
+            margin-right: 10px;
+            text-align: right;
+        }
+        .input-group input[type="text"],
+        .input-group select {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        /* Estilo para a seção de texto de descrição */
+        .description-text {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+            padding: 0 40px 20px; /* Adicionar padding horizontal */
+        }
+        /* Estilo para a seção de informação opcional */
+        .optional-info {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 0 40px; /* Adicionar padding horizontal */
+        }
+        .optional-info p {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .optional-info .caption {
+            font-weight: normal;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        /* Estilo para o container do botão "Connect" (centralizado) */
+        .connect-button-container {
+            display: flex;
+            justify-content: center; /* CENTRALIZA o botão horizontalmente */
+            margin-top: 20px;
+        }
+        .connect-button {
+            background-color: #007bff; /* Azul padrão para botões, similar ao da imagem */
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .header-title {
+            display: none; /* Esconde o título no lugar antigo */
+        }
+        /* Estilo para o rodapé */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 12px;
+            color: #666;
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="pt-BR"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Partner Company X - Conexão SAP Concur&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilos básicos para o corpo e layout central */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: Arial, sans-serif;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #f4f4f4; /* Cor de fundo suave */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilo para o cabeçalho (laranja) */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>header {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #ff8c00; /* Laranja da imagem */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 10px 5%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: space-between; /* Distribui o espaço entre os itens */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative; /* Necessário para posicionamento absoluto/centralização */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilo para a seção do logo (mantido na esquerda) */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.logo-section {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>/* Garante que esta seção ocupe o espaço para alinhar o título */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>min-width: 150px;<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>z-index: 10;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Logo quadrado */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.logo-placeholder {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 40px;<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 40px;<span class="Apple-converted-space"> </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #f4f4f4;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-right: 15px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #333;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: bold;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* NOVO: Estilo para centralizar o título */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.header-title-container {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: absolute; /* Tira do fluxo normal */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>left: 50%; /* Move para o meio */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transform: translateX(-50%); /* Ajusta 50% da largura do próprio elemento para centralização perfeita */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 24px; /* Tamanho padrão de 24px do passo anterior */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: bold;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>z-index: 5;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>white-space: nowrap; /* Impede que o título quebre linha */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilo para os links do cabeçalho (mantido na direita) */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>nav {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>z-index: 10;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>nav a {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-decoration: none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-left: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 14px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilo para o container principal do formulário */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.main-container {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 40px 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilo para o cartão do formulário */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.form-card {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 1px solid #ccc;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 600px; /* Limite de largura para o cartão */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 8px rgba(0,0,0,0.1);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding-bottom: 40px; /* Padding inferior do card */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilo para o container do título do formulário com fundo cinza */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.form-title-container {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #f0f0f0; /* Cinza claro */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 20px 40px; /* Padding para o texto dentro */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #ccc; /* Linha divisória como no exemplo */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 30px; /* Espaço abaixo do título */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilo para o título do formulário (sem o fundo, agora está no container) */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.form-title {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 18px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: bold;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0; /* Remover margem padrão do h2 */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilo para os grupos de input */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.input-group {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 0 40px; /* Padding horizontal para os elementos internos do card */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.input-group label {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 150px; /* Largura fixa para os labels */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 14px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-right: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: right;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.input-group input[type="text"],</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.input-group select {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>flex-grow: 1;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 1px solid #ccc;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 4px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 14px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilo para a seção de texto de descrição */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.description-text {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding-bottom: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #eee;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #555;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 14px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>line-height: 1.5;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 0 40px 20px; /* Adicionar padding horizontal */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilo para a seção de informação opcional */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.optional-info {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-top: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 0 40px; /* Adicionar padding horizontal */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.optional-info p {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 14px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: bold;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #333;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 5px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.optional-info .caption {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: normal;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #555;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilo para o container do botão "Connect" (centralizado) */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.connect-button-container {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: center; /* CENTRALIZA o botão horizontalmente */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-top: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.connect-button {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #007bff; /* Azul padrão para botões, similar ao da imagem */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 10px 30px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 4px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>cursor: pointer;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: bold;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.header-title {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: none; /* Esconde o título no lugar antigo */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Estilo para o rodapé */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>footer {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 40px 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 12px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #666;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>footer a {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #007bff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-decoration: none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;header&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="logo-section"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="logo-placeholder"&gt;LOGO&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="header-title-container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Partner Company X</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;nav&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;a href="#"&gt;About&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;a href="#"&gt;Contact&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/nav&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="main-container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="form-card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="form-title-container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 class="form-title"&gt;Connect your SAP Concur account with App XXXXXXX&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="description-text"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;Duis at consectetur lorem donec&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent semper feugiat nibh sed.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;form&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="input-group"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;label for="account-id"&gt;Account ID&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="account-id" placeholder="your account id number..."&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="input-group"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;label for="auth-code"&gt;Authorization Code&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="auth-code" value="xxxx-xxxx-xxxx-xxxx" readonly&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="optional-info"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Optional Information and Inputs&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="caption"&gt;Nisl pretium fusce id velit ut tortor. Enim tortor at auctor urna nunc id cursus metus.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="input-group"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;label for="option"&gt;Choose an option&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;select id="option"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;option value=""&gt;Choose...&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;option value="op1"&gt;Option 1&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;option value="op2"&gt;Option 2&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;option value="op3"&gt;Option 3&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/select&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="connect-button-container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button type="submit" class="connect-button"&gt;Connect&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/form&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;footer&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;Privacy Policy&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>|</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#"&gt;Terms and Conditions&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p&gt;&amp;copy;2023 Partner Company X&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+
+    <header>
+        <div class="logo-section">
+            <div class="logo-placeholder">LOGO</div>
+        </div>
+
+        <div class="header-title-container">
+            Partner Company X
+        </div>
+        
+        <nav>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="form-card">
+            <div class="form-title-container">
+                <h2 class="form-title">Connect your SAP Concur account with App XXXXXXX</h2>
+            </div>
+
+            <div class="description-text">
+                <p>Duis at consectetur lorem donec</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent semper feugiat nibh sed.</p>
+            </div>
+
+            <form>
+                <div class="input-group">
+                    <label for="account-id">Account ID</label>
+                    <input type="text" id="account-id" placeholder="your account id number...">
+                </div>
+
+                <div class="input-group">
+                    <label for="auth-code">Authorization Code</label>
+                    <input type="text" id="auth-code" value="xxxx-xxxx-xxxx-xxxx" readonly>
+                </div>
+
+                <div class="optional-info">
+                    <p>Optional Information and Inputs</p>
+                    <p class="caption">Nisl pretium fusce id velit ut tortor. Enim tortor at auctor urna nunc id cursus metus.</p>
+                </div>
+
+                <div class="input-group">
+                    <label for="option">Choose an option</label>
+                    <select id="option">
+                        <option value="">Choose...</option>
+                        <option value="op1">Option 1</option>
+                        <option value="op2">Option 2</option>
+                        <option value="op3">Option 3</option>
+                    </select>
+                </div>
+
+                <div class="connect-button-container">
+                    <button type="submit" class="connect-button">Connect</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <a href="#">Privacy Policy</a>
+        |
+        <a href="#">Terms and Conditions</a>
+        <p>&copy;2023 Partner Company X</p>
+    </footer>
+
 </body>
 </html>
