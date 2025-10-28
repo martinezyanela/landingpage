@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Company X - Conexão SAP Concur</title>
+    <style>
+        /* Estilos básicos para o corpo e layout central */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Cor de fundo suave */
+        }
+        /* Estilo para o cabeçalho (laranja) */
+        header {
+            background-color: #ff8c00; /* Laranja da imagem */
+            color: white;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between; /* Distribui o espaço entre os itens */
+            align-items: center;
+            position: relative; /* Necessário para posicionamento absoluto/centralização */
+        }
+        /* Estilo para a seção do logo (mantido na esquerda) */
+        .logo-section {
+            display: flex;
+            align-items: center;
+            /* Garante que esta seção ocupe o espaço para alinhar o título */
+            min-width: 150px; 
+            z-index: 10;
+        }
+        /* Logo quadrado */
+        .logo-placeholder {
+            width: 40px; 
+            height: 40px; 
+            background-color: #f4f4f4;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        /* NOVO: Estilo para centralizar o título */
+        .header-title-container {
+            position: absolute; /* Tira do fluxo normal */
+            left: 50%; /* Move para o meio */
+            transform: translateX(-50%); /* Ajusta 50% da largura do próprio elemento para centralização perfeita */
+            font-size: 24px; /* Tamanho padrão de 24px do passo anterior */
+            font-weight: bold;
+            z-index: 5;
+            white-space: nowrap; /* Impede que o título quebre linha */
+        }
+        /* Estilo para os links do cabeçalho (mantido na direita) */
+        nav {
+            z-index: 10;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        /* Estilo para o container principal do formulário */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        /* Estilo para o cartão do formulário */
+        .form-card {
+            background-color: white;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 600px; /* Limite de largura para o cartão */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding-bottom: 40px; /* Padding inferior do card */
+        }
+        /* Estilo para o container do título do formulário com fundo cinza */
+        .form-title-container {
+            background-color: #f0f0f0; /* Cinza claro */
+            padding: 20px 40px; /* Padding para o texto dentro */
+            border-bottom: 1px solid #ccc; /* Linha divisória como no exemplo */
+            margin-bottom: 30px; /* Espaço abaixo do título */
+        }
+        /* Estilo para o título do formulário (sem o fundo, agora está no container) */
+        .form-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0; /* Remover margem padrão do h2 */
+        }
+        /* Estilo para os grupos de input */
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 0 40px; /* Padding horizontal para os elementos internos do card */
+        }
+        .input-group label {
+            width: 150px; /* Largura fixa para os labels */
+            font-size: 14px;
+            margin-right: 10px;
+            text-align: right;
+        }
+        .input-group input[type="text"],
+        .input-group select {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        /* Estilo para a seção de texto de descrição */
+        .description-text {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+            padding: 0 40px 20px; /* Adicionar padding horizontal */
+        }
+        /* Estilo para a seção de informação opcional */
+        .optional-info {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 0 40px; /* Adicionar padding horizontal */
+        }
+        .optional-info p {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .optional-info .caption {
+            font-weight: normal;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        /* Estilo para o container do botão "Connect" (centralizado) */
+        .connect-button-container {
+            display: flex;
+            justify-content: center; /* CENTRALIZA o botão horizontalmente */
+            margin-top: 20px;
+        }
+        .connect-button {
+            background-color: #007bff; /* Azul padrão para botões, similar ao da imagem */
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .header-title {
+            display: none; /* Esconde o título no lugar antigo */
+        }
+        /* Estilo para o rodapé */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 12px;
+            color: #666;
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-section">
+            <div class="logo-placeholder">LOGO</div>
+        </div>
+
+        <div class="header-title-container">
+            Partner Company X
+        </div>
+        
+        <nav>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="form-card">
+            <div class="form-title-container">
+                <h2 class="form-title">Connect your SAP Concur account with App XXXXXXX</h2>
+            </div>
+
+            <div class="description-text">
+                <p>Duis at consectetur lorem donec</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent semper feugiat nibh sed.</p>
+            </div>
+
+            <form>
+                <div class="input-group">
+                    <label for="account-id">Account ID</label>
+                    <input type="text" id="account-id" placeholder="your account id number...">
+                </div>
+
+                <div class="input-group">
+                    <label for="auth-code">Authorization Code</label>
+                    <input type="text" id="auth-code" value="xxxx-xxxx-xxxx-xxxx" readonly>
+                </div>
+
+                <div class="optional-info">
+                    <p>Optional Information and Inputs</p>
+                    <p class="caption">Nisl pretium fusce id velit ut tortor. Enim tortor at auctor urna nunc id cursus metus.</p>
+                </div>
+
+                <div class="input-group">
+                    <label for="option">Choose an option</label>
+                    <select id="option">
+                        <option value="">Choose...</option>
+                        <option value="op1">Option 1</option>
+                        <option value="op2">Option 2</option>
+                        <option value="op3">Option 3</option>
+                    </select>
+                </div>
+
+                <div class="connect-button-container">
+                    <button type="submit" class="connect-button">Connect</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <a href="#">Privacy Policy</a>
+        |
+        <a href="#">Terms and Conditions</a>
+        <p>&copy;2023 Partner Company X</p>
+    </footer>
+
+</body>
+</html>
